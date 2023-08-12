@@ -36,7 +36,7 @@ CON_COMMAND(soundscape_test, "A command intended for soundscape tests.\nEntering
 		pSoundscape->KeyValue("radius", "-1");
 		pSoundscape->Spawn();
 
-		Msg("Soundscape name: %s\n", nameSoundscape, argCount);
+		Msg("Soundscape %s start\n", nameSoundscape);
 	}
 	else
 	{
