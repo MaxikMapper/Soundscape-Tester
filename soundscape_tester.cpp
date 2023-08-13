@@ -1,5 +1,4 @@
 #include "cbase.h"
-#include "soundscape.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -15,8 +14,8 @@ CON_COMMAND(soundscape_test, "A command intended for soundscape tests.\nEntering
 			// Check if the entity is an instance of the "env_soundscape" class
 			if (FClassnameIs(pEntity, "env_soundscape"))
 			{				
-				// Send the "Kill" input for the found env_soundscape
-				pEntity->AcceptInput("Kill", NULL, NULL, variant_t(), 0);
+				//Remove all found env_soundscape
+				pEntity->Remove();
 			}
 		}
 
@@ -30,7 +29,7 @@ CON_COMMAND(soundscape_test, "A command intended for soundscape tests.\nEntering
 		CBasePlayer *pPlayer = UTIL_GetLocalPlayer();
 
 		//Create new env_soundscape
-		CEnvSoundscape *pSoundscape = static_cast<CEnvSoundscape*>(CreateEntityByName("env_soundscape"));
+		CBaseEntity *pSoundscape = CreateEntityByName("env_soundscape");
 		pSoundscape->SetAbsOrigin(pPlayer->GetAbsOrigin());
 		pSoundscape->KeyValue("soundscape", nameSoundscape);
 		pSoundscape->KeyValue("radius", "-1");
